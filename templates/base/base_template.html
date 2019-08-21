@@ -1,0 +1,19 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}undifined{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"></link>
+    <script src="{% static 'jquery/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    {% block importInHead %}{% endblock %}
+  </head>
+  <body>
+    {% block content %}
+      <h1>block contect is empty</h1>
+    {% endblock%}
+  </body>
+  {% block importInFoot %}{% endblock %}
+
+</html>
