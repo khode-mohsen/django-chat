@@ -10,6 +10,47 @@
     {% block importInHead %}{% endblock %}
   </head>
   <body>
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><h1>django-chat</h1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="/">home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/events">events</a>
+            </li> -->
+
+          </ul>
+          <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="accounts/profile/{{user.username}}">wellcome {{user.username}}</a>
+                  <!-- </li>
+                  <li class="nav-item"> --><br>
+                  <button class="btn btn-outline-info" type="button" name="button">
+                    <a href="/accounts/logout">logout</a>
+                  </button>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <button class="btn btn-outline-info" type="button" name="button">
+                    <a href="/accounts/login">login</a>
+                  </button>
+                  <button class="btn btn-outline-success" type="button" name="button">
+                    <a href="/accounts/register">register</a>
+                  </button>
+                </li>
+              {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
     {% block content %}
       <h1>block contect is empty</h1>
     {% endblock%}

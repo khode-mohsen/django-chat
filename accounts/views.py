@@ -2,6 +2,7 @@ from django.shortcuts import render , HttpResponse , get_object_or_404 , redirec
 from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.forms import AuthenticationForm
 from accounts.forms import NewUserForm
+from django.contrib.auth.models import User
 # Create your views here.
 def register_request(request):
     form = NewUserForm(request.POST or None)
@@ -35,7 +36,7 @@ def login_request(request):
                 print('error :: invalid username or password')
         else:
             print('error :: invalid form data')
-            return render(request , 'login.html' , context = {'error':'usename or password is wrong !','form':form})
+            return render(request , 'accounts/login.html' , context = {'error':'usename or password is wrong !','form':form})
 
     form = AuthenticationForm()
     return render(request , 'accounts/login.html' , context = {'form' : form})
@@ -43,3 +44,6 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     return redirect('/')
+def profile(request, username):
+    user = get_object_or_404(User , username=username)
+    return render(request, 'accounts/profile.html',{'user':user})
