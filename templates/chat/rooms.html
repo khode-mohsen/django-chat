@@ -1,0 +1,9 @@
+{% extends 'base/base_template.html'%}
+
+{% block content %}
+  {% for room in rooms %}
+    <h1><a href="{{room.slug}}">{{room.name}}</a> </h1>
+    <p>{{room.description}}</p>
+    <hr>
+  {% endfor %}
+{% endblock %}

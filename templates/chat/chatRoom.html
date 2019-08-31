@@ -1,0 +1,10 @@
+{% extends 'base/base_template.html' %}
+
+{% block content %}
+  <h1>{{ room.name }}</h1>
+  <hr>
+  {% for message in messages %}
+  <p>{{message.content}}</p>
+  <p>{{message.date}}</p>
+  {% endfor %}
+{% endblock %}
